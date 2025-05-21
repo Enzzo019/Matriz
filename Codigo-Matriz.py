@@ -23,14 +23,21 @@ print(matriz[1])
 poe1numaLinhaDaRegiaoPreta(1,matriz)
 print(matriz[1])
 
-def dividir_coeficientes(linha1, linha2):
-    resultados = []
-    for i in range(len(linha1)):
-        if linha2[i] == 0:
-            resultados.append(np.inf)  
-        else:
-            resultados.append(linha1[i] / linha2[i])
-    return resultados
+# Está função é responsavel por dividir a linha por o número pivo e fazer que os numeros virem 1 ou proximo disso, tirando só a parte preta para que 0.
+def resolverSistema(mat):
+    qtdLinhas = len(mat)
+
+    # Colocando 1 nas linhas da região preta
+    for i in range(qtdLinhas):
+        poe1numaLinhaDaRegiaoPreta(i, mat)
+        print(f"Após normalizar linha {i+1}: {mat[i]}")
+
+    # Eliminando zeros abaixo da diagonal principal
+    tira0sDaAreaPreta(mat)
+    
+    print("\nMatriz após troca de linhas e normalização:")
+    for linha in mat:
+        print(linha)
 
 '''-----------------------------------------------'''
 
